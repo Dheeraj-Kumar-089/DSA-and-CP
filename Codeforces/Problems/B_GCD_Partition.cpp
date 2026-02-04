@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MOD = 1e9 + 7;
+#define ll long long
+#define vll vector<long long>
+#define vi vector<int>
+#define push push_back
+#define pop pop_back
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+
+void solve(){
+    ll n;
+    cin>>n;
+
+    vll a(n);
+    for(auto&x:a) cin>>x;
+    
+    vll prefixsum(n);
+    prefixsum[0] = a[0];
+
+
+    for (ll i = 1; i < n; i++)
+    {
+        prefixsum[i] = prefixsum[i - 1] + a[i];
+    }
+
+    ll ans = 0;
+
+    for (ll i = 0; i < n-1; i++)
+    {
+        ll gcd = __gcd(prefixsum[i],prefixsum[n-1]-prefixsum[i]);
+        ans = max(ans,gcd);
+    }
+
+    cout<<ans<<endl;
+    
+
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+}

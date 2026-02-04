@@ -1,0 +1,1 @@
+cout<<initialheight<<" "<<i<<" ";
